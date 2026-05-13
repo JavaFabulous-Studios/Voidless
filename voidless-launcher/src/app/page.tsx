@@ -29,6 +29,7 @@ export default function Home() {
           <div className="news-card">
             <h3>Community</h3>
             <p>Join the Voidless community on Discord.</p>
+            <a href="https://dsc.gg/voidless5" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--accent)', textDecoration: 'none', fontWeight: 'bold', marginTop: '10px', display: 'inline-block' }}>Join Now →</a>
           </div>
         </div>
       </main>

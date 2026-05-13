@@ -8,7 +8,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(GAME_SRC_DIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
 
 # Find Engine
-set(ENGINE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../Voidless Engine)
+set(ENGINE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../Voidless Engine")
 add_subdirectory("${ENGINE_DIR}" "${CMAKE_CURRENT_BINARY_DIR}/engine")
 
 # Game Executable
