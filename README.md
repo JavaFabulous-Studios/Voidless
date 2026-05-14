@@ -15,3 +15,6 @@ This is still in developement.
 
 ## Developement Screenshots
 <img width="962" height="1036" alt="image" src="https://github.com/user-attachments/assets/b0a39b5d-0d0e-4ef8-9714-68653b0a36dd" />
+
+## Links 
+Discord: https://dsc.gg/voidless5
