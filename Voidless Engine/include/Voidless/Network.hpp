@@ -40,14 +40,18 @@ namespace Voidless {
                 return false;
             }
 
+            std::cout << "Connecting to laptop at " << address << "... (Attempting for 10 seconds)" << std::endl;
+
             ENetEvent event;
-            if (enet_host_service(s_Client, &event, 5000) > 0 && event.type == ENET_EVENT_TYPE_CONNECT) {
-                std::cout << "Connected to server at " << address << ":" << port << std::endl;
+            // Increased to 10 seconds for Wi-Fi stability
+            if (enet_host_service(s_Client, &event, 10000) > 0 && event.type == ENET_EVENT_TYPE_CONNECT) {
+                std::cout << "SUCCESS! Connected to server at " << address << ":" << port << std::endl;
                 s_Connected = true;
                 return true;
             } else {
                 enet_peer_reset(s_Peer);
-                std::cerr << "Connection to server failed!" << std::endl;
+                std::cerr << "FAILED! Laptop at " << address << " did not answer." << std::endl;
+                s_Connected = false;
                 return false;
             }
         }
