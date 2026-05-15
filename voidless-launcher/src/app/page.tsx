@@ -15,13 +15,25 @@ export default function Home() {
     <div className="launcher-container">
       <aside className="sidebar">
         <div className="sidebar-top">
-          <div className="sidebar-icon active" title="Voidless Home">V</div>
-          <div className="sidebar-icon" title="Game Library">G</div>
-          <div className="sidebar-icon" title="Social & Store">S</div>
+          <div className="sidebar-item active">
+            <div className="sidebar-icon">V</div>
+            <span className="sidebar-label">Voidless Home</span>
+          </div>
+          <div className="sidebar-item">
+            <div className="sidebar-icon">G</div>
+            <span className="sidebar-label">Game Library</span>
+          </div>
+          <div className="sidebar-item">
+            <div className="sidebar-icon">S</div>
+            <span className="sidebar-label">Social & Store</span>
+          </div>
         </div>
         <div className="sidebar-bottom">
-          <div className="sidebar-icon settings">⚙️</div>
-          <div style={{ paddingBottom: '20px', fontSize: '0.8rem', opacity: 0.5 }}>v0.1.0</div>
+          <div className="sidebar-item settings">
+            <div className="sidebar-icon">⚙️</div>
+            <span className="sidebar-label">Settings</span>
+          </div>
+          <div style={{ paddingBottom: '20px', fontSize: '0.8rem', opacity: 0.5, paddingLeft: '20px' }} className="version-label">v0.1.0</div>
         </div>
       </aside>
       
