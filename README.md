@@ -4,6 +4,7 @@ Hi! Welcome to Voidless! This is a game including:
 - Voidless Inside Voidless/Voidless (Main Game)
 - Voidless Engine Inside Voidless/Voidless Engine (Game engine also available for everyone!)
 - Voidless Launcher Inside Voidless/Voidless Launcher (Game Launcher for Voidless)
+- Voidless Server Inside Voidless/Voidless Server (Multiplayer server for the void)
 - And this README.md that you are reading right now!
 - Oh and also the .gitignore file
 
