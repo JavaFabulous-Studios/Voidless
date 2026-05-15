@@ -57,6 +57,7 @@ add_library(VoidlessEngine STATIC
     ${ENGINE_SRC_DIR}/main.cpp
     ${ENGINE_SRC_DIR}/Window.cpp
     ${ENGINE_SRC_DIR}/WindowsInput.cpp
+    ${ENGINE_SRC_DIR}/Audio.cpp
     ${imgui_SOURCE_DIR}/imgui.cpp
     ${imgui_SOURCE_DIR}/imgui_draw.cpp
     ${imgui_SOURCE_DIR}/imgui_tables.cpp

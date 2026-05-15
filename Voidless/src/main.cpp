@@ -1,4 +1,5 @@
 #include "Voidless/Window.hpp"
+#include "Voidless/Audio.hpp"
 #include <glad/glad.h>
 #include <imgui.h>
 #include <iostream>
@@ -13,6 +14,9 @@ int main() {
 
     Voidless::WindowProps props("Voidless", 1280, 720);
     Voidless::Window window(props);
+    
+    Voidless::Audio::Init();
+    Voidless::Audio::PlayMusic("assets/menu_music.mp3", true);
 
     window.SetClearColor(0.05f, 0.02f, 0.1f, 1.0f);
     GameState currentState = GameState::MainMenu;
@@ -54,5 +58,6 @@ int main() {
         window.OnUpdate();
     }
 
+    Voidless::Audio::Shutdown();
     return 0;
 }
