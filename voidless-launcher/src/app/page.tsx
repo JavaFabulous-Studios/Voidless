@@ -1,6 +1,16 @@
+'use client'
 import './globals.css'
 
 export default function Home() {
+  const handleLaunch = async () => {
+    try {
+      console.log('Launching game...');
+      await fetch('/api/launch', { method: 'POST' });
+    } catch (err) {
+      console.error('Launch failed', err);
+    }
+  };
+
   return (
     <div className="launcher-container">
       <aside className="sidebar">
@@ -19,7 +29,7 @@ export default function Home() {
         <section className="hero">
           <h1 className="title">VOIDLESS</h1>
           <p>The journey begins in the void.</p>
-          <button className="play-button">PLAY</button>
+          <button className="play-button" onClick={handleLaunch}>PLAY</button>
         </section>
 
         <div className="content-grid">
