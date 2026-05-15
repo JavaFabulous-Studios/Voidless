@@ -43,16 +43,34 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(glad)
 
+# ImGui
+FetchContent_Declare(
+    imgui
+    GIT_REPOSITORY https://github.com/ocornut/imgui.git
+    GIT_TAG v1.89.9
+    GIT_SHALLOW TRUE
+)
+FetchContent_MakeAvailable(imgui)
+
 # Engine Library
 add_library(VoidlessEngine STATIC
     ${ENGINE_SRC_DIR}/main.cpp
     ${ENGINE_SRC_DIR}/Window.cpp
     ${ENGINE_SRC_DIR}/WindowsInput.cpp
+    ${imgui_SOURCE_DIR}/imgui.cpp
+    ${imgui_SOURCE_DIR}/imgui_draw.cpp
+    ${imgui_SOURCE_DIR}/imgui_tables.cpp
+    ${imgui_SOURCE_DIR}/imgui_widgets.cpp
+    ${imgui_SOURCE_DIR}/imgui_demo.cpp
+    ${imgui_SOURCE_DIR}/backends/imgui_impl_glfw.cpp
+    ${imgui_SOURCE_DIR}/backends/imgui_impl_opengl3.cpp
 )
 
 target_include_directories(VoidlessEngine PUBLIC 
     ${ENGINE_INCLUDE_DIR}
     ${CMAKE_CURRENT_SOURCE_DIR}/vendor
+    ${imgui_SOURCE_DIR}
+    ${imgui_SOURCE_DIR}/backends
 )
 
 target_link_libraries(VoidlessEngine PUBLIC 

@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <memory>
 
 struct GLFWwindow;
 
@@ -25,6 +26,10 @@ namespace Voidless {
         void OnUpdate();
         void Clear();
         void SetClearColor(float r, float g, float b, float a);
+
+        // UI
+        void BeginUI();
+        void EndUI();
 
         unsigned int GetWidth() const { return m_Data.Width; }
         unsigned int GetHeight() const { return m_Data.Height; }
