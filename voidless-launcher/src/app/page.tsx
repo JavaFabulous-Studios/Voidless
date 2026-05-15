@@ -15,9 +15,9 @@ export default function Home() {
     <div className="launcher-container">
       <aside className="sidebar">
         <div className="sidebar-top">
-          <div className="sidebar-icon active">V</div>
-          <div className="sidebar-icon">G</div>
-          <div className="sidebar-icon">S</div>
+          <div className="sidebar-icon active" title="Voidless Home">V</div>
+          <div className="sidebar-icon" title="Game Library">G</div>
+          <div className="sidebar-icon" title="Social & Store">S</div>
         </div>
         <div className="sidebar-bottom">
           <div className="sidebar-icon settings">⚙️</div>
