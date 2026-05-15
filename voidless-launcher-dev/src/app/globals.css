@@ -33,16 +33,10 @@ body {
   background: var(--glass);
   backdrop-filter: blur(10px);
   border-right: 1px solid var(--glass-border);
-  padding: 30px 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.sidebar-top, .sidebar-bottom {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 20px 0;
   gap: 20px;
 }
 
@@ -59,21 +53,10 @@ body {
   border: 1px solid transparent;
 }
 
-.sidebar-icon:hover, .sidebar-icon.active {
+.sidebar-icon:hover {
   background: var(--accent);
-  box-shadow: 0 0 20px var(--accent-glow);
-  transform: scale(1.1);
-  border-color: rgba(255, 255, 255, 0.2);
-}
-
-.sidebar-icon.settings {
-  font-size: 1.5rem;
-  opacity: 0.7;
-}
-
-.sidebar-icon.settings:hover {
-  opacity: 1;
-  transform: rotate(45deg) scale(1.1);
+  box-shadow: 0 0 15px var(--accent-glow);
+  transform: scale(1.05);
 }
 
 .main-content {
@@ -158,79 +141,11 @@ body {
   filter: brightness(1.2);
 }
 
-.news-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 25px;
-}
-
-.content-grid {
-  display: grid;
-  grid-template-columns: 1fr 300px;
-  gap: 40px;
-}
-
-.section-title {
-  font-size: 1.2rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 20px;
-  opacity: 0.8;
-}
-
-.news-tag {
-  font-size: 0.7rem;
-  font-weight: 900;
-  background: var(--accent);
-  padding: 4px 10px;
-  border-radius: 6px;
-  display: inline-block;
-  margin-bottom: 15px;
-  letter-spacing: 1px;
-}
-
-.news-link {
-  color: var(--accent);
-  text-decoration: none;
-  font-weight: 700;
-  margin-top: 15px;
-  display: inline-block;
-  transition: all 0.3s ease;
-}
-
-.news-link:hover {
-  transform: translateX(5px);
-  filter: brightness(1.2);
-}
-
-.quick-links {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.link-card {
-  background: var(--glass);
-  padding: 20px;
-  border-radius: 16px;
-  border: 1px solid var(--glass-border);
-  cursor: pointer;
-  transition: all 0.3s ease;
-  font-weight: 600;
-}
-
-.link-card:hover {
-  background: var(--glass-border);
-  border-color: var(--accent);
-  transform: translateX(5px);
-}
-
 .news-card {
   background: var(--glass);
   backdrop-filter: blur(15px);
-  border-radius: 24px;
-  padding: 30px;
+  border-radius: 20px;
+  padding: 25px;
   border: 1px solid var(--glass-border);
   transition: all 0.3s ease;
   animation: fadeIn 1s ease-out forwards;

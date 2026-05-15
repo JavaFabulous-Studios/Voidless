@@ -1,4 +1,5 @@
 #include "Voidless/Window.hpp"
+#include "Voidless/Input.hpp"
 #include <iostream>
 
 int main() {
@@ -7,8 +8,14 @@ int main() {
     Voidless::WindowProps props("Voidless", 1280, 720);
     Voidless::Window window(props);
 
+    window.SetClearColor(0.1f, 0.1f, 0.15f, 1.0f); // Sleek dark blue background
+
     while (!window.ShouldClose()) {
-        // Game Logic here
+        window.Clear();
+
+        if (Voidless::Input::IsKeyPressed(256)) { // GLFW_KEY_ESCAPE is 256
+             break;
+        }
         
         window.OnUpdate();
     }

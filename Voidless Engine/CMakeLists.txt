@@ -47,6 +47,7 @@ FetchContent_MakeAvailable(glad)
 add_library(VoidlessEngine STATIC
     ${ENGINE_SRC_DIR}/main.cpp
     ${ENGINE_SRC_DIR}/Window.cpp
+    ${ENGINE_SRC_DIR}/WindowsInput.cpp
 )
 
 target_include_directories(VoidlessEngine PUBLIC 

@@ -23,6 +23,8 @@ namespace Voidless {
         ~Window();
 
         void OnUpdate();
+        void Clear();
+        void SetClearColor(float r, float g, float b, float a);
 
         unsigned int GetWidth() const { return m_Data.Width; }
         unsigned int GetHeight() const { return m_Data.Height; }
