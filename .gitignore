@@ -4,6 +4,9 @@ bin/
 obj/
 out/
 
+# Dev version (Local only)
+voidless-launcher-dev/
+
 # Dependencies
 node_modules/
 vendor/ (if they are just downloads)
