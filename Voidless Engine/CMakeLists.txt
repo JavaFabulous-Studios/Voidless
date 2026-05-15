@@ -52,6 +52,14 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(imgui)
 
+# ENet
+FetchContent_Declare(
+    enet
+    GIT_REPOSITORY https://github.com/lsalzman/enet.git
+    GIT_TAG master
+)
+FetchContent_MakeAvailable(enet)
+
 # Engine Library
 add_library(VoidlessEngine STATIC
     ${ENGINE_SRC_DIR}/main.cpp
@@ -72,12 +80,14 @@ target_include_directories(VoidlessEngine PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/vendor
     ${imgui_SOURCE_DIR}
     ${imgui_SOURCE_DIR}/backends
+    ${enet_SOURCE_DIR}/include
 )
 
 target_link_libraries(VoidlessEngine PUBLIC 
     glfw
     glm::glm
     glad
+    enet
 )
 
 # Test Executable
