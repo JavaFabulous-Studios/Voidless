@@ -56,6 +56,39 @@ namespace Voidless {
             }
         }
 
+        enum class PacketType : uint8_t {
+            POSITION = 1
+        };
+
+        struct PlayerPosPacket {
+            PacketType type = PacketType::POSITION;
+            float x, y, z;
+        };
+
+        static void SendPosition(float x, float y, float z) {
+            if (!s_Connected || !s_Peer) return;
+
+            PlayerPosPacket packet;
+            packet.x = x;
+            packet.y = y;
+            packet.z = z;
+
+            ENetPacket* enetPacket = enet_packet_create(&packet, sizeof(PlayerPosPacket), ENET_PACKET_FLAG_UNRELIABLE_FRAGMENT);
+            enet_peer_send(s_Peer, 0, enetPacket);
+        }
+
+        static void Update() {
+            if (!s_Client) return;
+            ENetEvent event;
+            while (enet_host_service(s_Client, &event, 0) > 0) {
+                if (event.type == ENET_EVENT_TYPE_DISCONNECT) {
+                    std::cout << "Disconnected from server." << std::endl;
+                    s_Connected = false;
+                }
+                enet_packet_destroy(event.packet);
+            }
+        }
+
         static bool IsConnected() { return s_Connected; }
 
     private:

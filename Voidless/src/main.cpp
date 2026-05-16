@@ -184,6 +184,10 @@ int main() {
             // Process movement
             ProcessInput(nativeWindow, cubePositions);
 
+            // Send position to server every frame
+            Voidless::Network::SendPosition(camera.Position.x, camera.Position.y, camera.Position.z);
+            Voidless::Network::Update();
+
             // Render 3D Scene
             basicShader.Bind();
             
