@@ -12,7 +12,7 @@
 enum class GameState { MainMenu, Playing };
 
 // Global Camera setup
-Voidless::Camera camera(glm::vec3(0.0f, 1.0f, 3.0f));
+Voidless::Camera camera(glm::vec3(0.0f, 1.0f, 8.0f));
 float lastX = 1280.0f / 2.0f;
 float lastY = 720.0f / 2.0f;
 bool firstMouse = true;
