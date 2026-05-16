@@ -139,6 +139,10 @@ int main() {
             if (Voidless::Network::IsConnected()) {
                 if (ImGui::Button("START GAME", ImVec2(100, 40))) {
                     currentState = GameState::Playing;
+                    glfwSetInputMode(nativeWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+                    captureMouse = true;
+                    firstMouse = true;
+                    camera.MovementSpeed = 8.0f; // Boosted speed
                 }
             } else {
                 ImGui::PushStyleColor(ImGuiCol_Button, ImVec4(0.3f, 0.3f, 0.3f, 1.0f));
@@ -155,13 +159,6 @@ int main() {
             window.EndUI();
         } 
         else if (currentState == GameState::Playing) {
-            // Lock cursor for FPS
-            if (!captureMouse) {
-                glfwSetInputMode(nativeWindow, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-                captureMouse = true;
-                firstMouse = true; // reset to avoid camera jump
-            }
-            
             if (captureMouse) {
                 double xposIn, yposIn;
                 glfwGetCursorPos(nativeWindow, &xposIn, &yposIn);
@@ -218,6 +215,8 @@ int main() {
             // Allow returning to menu with ESC
             if (glfwGetKey(nativeWindow, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
                 currentState = GameState::MainMenu;
+                captureMouse = false;
+                glfwSetInputMode(nativeWindow, GLFW_CURSOR, GLFW_CURSOR_NORMAL);
             }
 
             // Render UI over 3D
