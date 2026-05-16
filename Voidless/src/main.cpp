@@ -23,7 +23,27 @@ bool captureMouse = false;
 // Input callback variables
 GLFWwindow* nativeWindow = nullptr;
 
-void ProcessInput(GLFWwindow* window) {
+// Simple AABB Collision check
+bool CheckCollision(glm::vec3 playerPos, const std::vector<glm::vec3>& obstacles) {
+    float playerSize = 0.5f; // Boundary around the player
+    
+    for (size_t i = 1; i < obstacles.size(); i++) {
+        glm::vec3 obsPos = obstacles[i];
+        glm::vec3 obsSize = glm::vec3(2.2f, 3.2f, 2.2f); // Slightly larger than visual for safety
+        
+        bool collisionX = playerPos.x + playerSize >= obsPos.x - obsSize.x / 2.0f &&
+                         obsPos.x + obsSize.x / 2.0f >= playerPos.x - playerSize;
+        bool collisionZ = playerPos.z + playerSize >= obsPos.z - obsSize.z / 2.0f &&
+                         obsPos.z + obsSize.z / 2.0f >= playerPos.z - playerSize;
+        
+        if (collisionX && collisionZ) return true;
+    }
+    return false;
+}
+
+void ProcessInput(GLFWwindow* window, const std::vector<glm::vec3>& obstacles) {
+    glm::vec3 oldPos = camera.Position;
+    
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
         camera.ProcessKeyboard(0, deltaTime); // FORWARD
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
@@ -32,6 +52,11 @@ void ProcessInput(GLFWwindow* window) {
         camera.ProcessKeyboard(2, deltaTime); // LEFT
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
         camera.ProcessKeyboard(3, deltaTime); // RIGHT
+
+    // If we hit a wall, move back
+    if (CheckCollision(camera.Position, obstacles)) {
+        camera.Position = oldPos;
+    }
 }
 
 int main() {
@@ -160,7 +185,7 @@ int main() {
             }
 
             // Process movement
-            ProcessInput(nativeWindow);
+            ProcessInput(nativeWindow, cubePositions);
 
             // Render 3D Scene
             basicShader.Bind();
